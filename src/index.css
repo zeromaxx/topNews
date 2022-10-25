@@ -7,13 +7,12 @@ body {
   font-family: "Roboto Slab", serif;
 }
 
-
 .navbar {
   display: flex;
   justify-content: space-between;
-   margin: auto;
-   height: 3rem;
-   max-width: 1270px;
+  margin: auto;
+  height: 3rem;
+  max-width: 1270px;
 }
 .navbar span {
   font-size: 1.5rem;
@@ -30,7 +29,7 @@ body {
   font-weight: 600;
   transition: all linear 0.3s;
 }
-.navbar a:hover{
+.navbar a:hover {
   color: #0074d9;
 }
 .navbar ul {
@@ -43,7 +42,7 @@ body {
 }
 section {
   max-width: 1270px;
-  margin: 3rem auto ;
+  margin: 3rem auto;
 }
 section img {
   width: 100%;
@@ -76,9 +75,15 @@ article {
   align-items: center;
   height: 3rem;
 }
-.header{
+.header {
   border-bottom: 3px solid #0074d9;
   width: fit-content;
   font-size: 2rem;
   margin: 1.5rem auto;
+}
+.loading-spinner {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
 }

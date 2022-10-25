@@ -5,6 +5,9 @@ const noAvailableImage =
 
 export default function HealthNews() {
     const { healthNews, isLoading } = useGlobalContext();
+    if (isLoading) {
+      return <h1 className="loading-spinner">Loading...</h1>;
+    }
   return (
     <section>
       {healthNews.map((article) => {

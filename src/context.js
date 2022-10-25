@@ -13,12 +13,22 @@ const AppProvider = ({ children }) => {
   const [news, setNews] = useState([]);
   const [healthNews, setHealthNews] = useState([]);
 
+  const removeArticle = (id) => {
+    const newArticles = news.filter(
+      (article) => article.publishedAt !== id
+    );
+    setNews(newArticles);
+  };
+
   const fetchNews = async (url) => {
     setLoading(true);
     try {
       const response = await fetch(url);
       const data = await response.json();
-      setNews( data.articles );
+      if (data.status === "ok") {
+        setNews(data.articles);
+        setLoading(false);
+      }
     } catch {}
   };
 
@@ -32,14 +42,14 @@ const AppProvider = ({ children }) => {
   };
   useEffect(() => {
     fetchNews(apiEndPoint);
-  },[]);
+  }, []);
 
   useEffect(() => {
-   getHealthNews(healthNewsApiEndPoint);
+    getHealthNews(healthNewsApiEndPoint);
   }, []);
 
   return (
-    <AppContext.Provider value={{ isLoading, news, healthNews }}>
+    <AppContext.Provider value={{ isLoading, news, healthNews,removeArticle }}>
       {children}
     </AppContext.Provider>
   );
