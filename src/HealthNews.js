@@ -1,12 +1,12 @@
 import React from "react";
 import { useGlobalContext } from "./context";
 const noAvailableImage =
-  "https://upload.wikimedia.org/wikipedia/commons/f/fc/No_picture_available.png";
+  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTa5wU-FNySDi8vRBfF6NgDGLAHfbxpxYCnSw&usqp=CAU";
 
 export default function HealthNews() {
     const { healthNews, isLoading } = useGlobalContext();
     if (isLoading) {
-      return <h1 className="loading-spinner">Loading...</h1>;
+      <div class="loader">Loading...</div>;
     }
   return (
     <section>
