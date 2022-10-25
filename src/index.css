@@ -1,13 +1,84 @@
-body {
+* {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: "Roboto Slab", serif;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+   margin: auto;
+   height: 3rem;
+   max-width: 1270px;
+}
+.navbar span {
+  font-size: 1.5rem;
+  color: #0074d9;
+}
+.navbar h1 {
+  font-size: 2rem;
+  margin-right: 2rem;
+  color: black;
+}
+.navbar a {
+  text-decoration: none;
+  color: black;
+  font-weight: 600;
+  transition: all linear 0.3s;
+}
+.navbar a:hover{
+  color: #0074d9;
+}
+.navbar ul {
+  display: flex;
+  align-items: center;
+}
+.navbar li {
+  list-style: none;
+  margin-right: 2rem;
+}
+section {
+  max-width: 1270px;
+  margin: 3rem auto ;
+}
+section img {
+  width: 100%;
+  max-width: 265px;
+  max-height: 140px;
+  object-fit: cover;
+}
+article {
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 1rem;
+  margin-top: 1rem;
+  display: flex;
+  align-items: center;
+}
+.article-info {
+  margin-left: 1rem;
+  /* width: 75%; */
+}
+.article-info a {
+  color: #0074d9;
+}
+.date-publised {
+  color: #ccc;
+}
+.footer {
+  background: #0074d9;
+  color: white;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 3rem;
+}
+.header{
+  border-bottom: 3px solid #0074d9;
+  width: fit-content;
+  font-size: 2rem;
+  margin: 1.5rem auto;
 }
