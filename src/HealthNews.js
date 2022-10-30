@@ -1,7 +1,6 @@
 import React from "react";
 import { useGlobalContext } from "./context";
-const noAvailableImage =
-  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTa5wU-FNySDi8vRBfF6NgDGLAHfbxpxYCnSw&usqp=CAU";
+import NoImage from "./no_image_available.jpg";
 
 export default function HealthNews() {
     const { healthNews, isLoading } = useGlobalContext();
@@ -16,7 +15,7 @@ export default function HealthNews() {
         return (
           <article key={publishedAt}>
             <img
-              src={urlToImage === null ? noAvailableImage : urlToImage}
+              src={urlToImage === null ? NoImage : urlToImage}
               alt="article"
             ></img>
             <div className="article-info">
@@ -25,7 +24,7 @@ export default function HealthNews() {
                 {publishedAt.slice(0, 19).replace("T", "   ")}
               </p>
               <p>{description}</p>
-              <a target="_blank" href={url}>
+              <a rel="noopener noreferrer" target="_blank" href={url}>
                 Διαβάστε Περισσοτερα
               </a>
             </div>

@@ -1,7 +1,8 @@
 import React from "react";
 import { useGlobalContext } from "./context";
-const noAvailableImage =
-  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTa5wU-FNySDi8vRBfF6NgDGLAHfbxpxYCnSw&usqp=CAU";
+import NoImage from "./no_image_available.jpg";
+import { HiClock } from "react-icons/hi";
+
 const News = () => {
   const { news, isLoading, removeArticle } = useGlobalContext();
   if (isLoading) {
@@ -10,25 +11,30 @@ const News = () => {
   return (
     <section>
       <h1 className="header">Top News in Greece</h1>
+      
       {news.map((article) => {
         const { title, publishedAt, description, urlToImage, url } = article;
         return (
           <article key={publishedAt}>
             <img
-              src={urlToImage === null ? noAvailableImage : urlToImage}
+              src={urlToImage === null ? NoImage : urlToImage}
               alt="article"
             ></img>
             <div className="article-info">
               <h2>{title}</h2>
               <p className="date-publised">
+                <HiClock className="clock" />
                 {publishedAt.slice(0, 19).replace("T", " ")}
               </p>
               <p>{description}</p>
-              <a target="_blank" href={url}>
+              <a rel="noopener noreferrer" target="_blank" href={url}>
                 Διαβάστε Περισσοτερα
               </a>
             </div>
-            <button className="notInterestedBtn" onClick={() => removeArticle(publishedAt)}>
+            <button
+              className="notInterestedBtn"
+              onClick={() => removeArticle(publishedAt)}
+            >
               Δεν με ενδιαφέρει
             </button>
           </article>
