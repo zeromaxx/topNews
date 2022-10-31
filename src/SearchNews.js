@@ -25,13 +25,17 @@ const SearchNews = () => {
   return (
     <section>
       <form className="searchForm" onSubmit={handleSubmit}>
-        <h3 className="form-header">Αναζητήστε Ειδήσεις ανα τον Κόσμο</h3>
+        <h3 className="form-header">Αναζητήστε ειδήσεις ανά τον κόσμο</h3>
         <input ref={refContainer} className="searchInput" type="text"></input>
 
         <button type="submit">Αναζήτηση</button>
         {error && <h3 className="error">Δεν Βρέθηκαν αποτελέσματα.</h3>}
       </form>
-
+      <Pagination
+        totalPosts={searchTerm.length}
+        postsPerPage={postsPerPage}
+        setCurrentPage={setCurrentPage}
+      />
       {currentPosts.map((article, index) => {
         const { title, publishedAt, description, urlToImage, url } = article;
         return (
@@ -53,11 +57,6 @@ const SearchNews = () => {
           </article>
         );
       })}
-      <Pagination
-        totalPosts={searchTerm.length}
-        postsPerPage={postsPerPage}
-        setCurrentPage={setCurrentPage}
-      />
     </section>
   );
 };

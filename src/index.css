@@ -15,12 +15,13 @@ nav {
   z-index: 5;
   background: white;
   box-shadow: rgba(0, 0, 0, 0.04) 0px 3px 5px;
+  transition: linear all 0.3s;
 }
 .navbar {
   display: flex;
   justify-content: space-between;
   margin: auto;
-
+  position: relative;
   height: 3rem;
 
   max-width: 1270px;
@@ -82,9 +83,9 @@ article {
     max-width: none;
   }
 }
+
 .article-info {
   margin-left: 1rem;
-  /* width: 75%; */
 }
 .article-info a {
   color: #0074d9;
@@ -111,6 +112,8 @@ footer {
   font-size: 2rem;
   margin: auto;
   margin-top: 5rem;
+  margin-bottom: 2rem;
+  text-align: center;
 }
 
 .loader,
@@ -227,7 +230,6 @@ footer {
   align-items: center;
 }
 .form-header {
-  /* margin: 3rem 0 3rem 0; */
   margin-bottom: 1rem;
 }
 .searchForm input {
@@ -235,7 +237,6 @@ footer {
   width: 50%;
   height: 2rem;
   outline: none;
-  /* border: 2px solid #0074d9; */
 }
 .searchForm input:focus {
   border: 2px solid #0074d9;
@@ -247,10 +248,76 @@ footer {
   color: white;
   background-color: #0074d9;
   border-radius: 5px;
+  cursor: pointer;
 }
-.error{
+.error {
   position: absolute;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
+}
+.pagination-btn {
+  width: 30px;
+  height: 30px;
+  border: 1px solid #ddd;
+  background-color: white;
+  margin-right: 0.5rem;
+  color: black;
+  cursor: pointer;
+}
+.activePage {
+  background-color: #0074d9;
+  color: white;
+}
+.burger-menu {
+  position: fixed;
+  top: 1%;
+  right: 1%;
+  cursor: pointer;
+  z-index: 100;
+  font-size: 2rem;
+}
+.pagination-container{
+  margin: 1rem 0 2rem 0;
+}
+
+@media (min-width:800px) {
+  .burger-menu{
+    display: none;
+  }
+}
+@media (max-width: 800px) {
+  .navbar {
+    display: block;
+    height: auto;
+    padding: 10px;
+  }
+  .navbar h1 {
+    text-align: center;
+  }
+  .navbar ul {
+    display: block;
+    text-align: center;
+    line-height: 1.8;
+  }
+  .searchForm {
+    padding-top: 5rem;
+  }
+  .footer {
+    justify-content: space-around;
+  }
+  nav {
+    left: -100%;
+  }
+  .pagination-container{
+    margin-top: 1rem;
+    text-align: center;
+  }
+}
+
+nav.show-nav {
+  left: 0;
+}
+.activeLink{
+  color: #0074d9;
 }

@@ -10,7 +10,7 @@ const News = () => {
   }
   return (
     <section>
-      <h1 className="header">Top News in Greece</h1>
+      <h1 className="header">Κορυφαίες Ειδήσεις στην Ελλάδα</h1>
       
       {news.map((article) => {
         const { title, publishedAt, description, urlToImage, url } = article;

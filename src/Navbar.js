@@ -1,24 +1,50 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 export default function Navbar() {
   return (
     <nav>
       <div className="navbar">
-        <Link to="/">
+        <NavLink to="/">
           <h1>
-            <span>Greece</span> News
+            <span>Top</span> News
           </h1>
-        </Link>
+        </NavLink>
         <ul>
           <li>
-            <Link to="/health">Υγεία</Link>
+            <NavLink
+              activestyle={{ color: "#0074d9" }}
+              style={({ isActive }) => ({
+                color: isActive ? "#0074d9" : "black",
+              })}
+              to="/health"
+            >
+              Υγεία
+            </NavLink>
           </li>
           <li>
-            <Link to="/search">Αναζήτηση Ειδήσεων</Link>
+            <NavLink
+              activestyle={{ color: "#0074d9" }}
+              style={({ isActive }) => ({
+                color: isActive ? "#0074d9" : "black",
+              })}
+              to="/technology"
+            >
+              Τεχνολογία
+            </NavLink>
           </li>
-          <li>διεθνή</li>
-          <li>αθλητισμός</li>
+          <li>
+            <NavLink
+              activestyle={{ color: "#0074d9" }}
+              style={({ isActive }) => ({
+                color: isActive ? "#0074d9" : "black",
+              })}
+              activeclassname="activeLink"
+              to="/search"
+            >
+              Αναζήτηση Ειδήσεων
+            </NavLink>
+          </li>
         </ul>
       </div>
     </nav>

@@ -4,7 +4,10 @@ const apiEndPoint =
   "https://newsapi.org/v2/top-headlines?country=gr&apiKey=a6e5cdfaeba2457b96eb3a918e3395c8";
 
 const healthNewsApiEndPoint =
-  "https://newsapi.org/v2/top-headlines?category=health&country=gr&apiKey=3a6e5cdfaeba2457b96eb3a918e3395c8";
+  "https://newsapi.org/v2/top-headlines?category=health&country=gr&apiKey=a6e5cdfaeba2457b96eb3a918e3395c8";
+
+const techNewsApiEndPoint =
+  "https://newsapi.org/v2/top-headlines?category=technology&country=gr&apiKey=a6e5cdfaeba2457b96eb3a918e3395c8";
 
 const AppContext = React.createContext();
 const AppProvider = ({ children }) => {
@@ -13,11 +16,32 @@ const AppProvider = ({ children }) => {
   const [query, setQuery] = useState("bitcoin");
   const [news, setNews] = useState([]);
   const [healthNews, setHealthNews] = useState([]);
+  const [techNews, setTechNews] = useState([]);
   const [searchTerm, setSearchTerm] = useState([]);
-  
+  const [isNavToggled, setNavToggled] = useState(false);
+
+  const toggleNav = () => {
+    const nav = document.querySelector("nav");
+    setNavToggled(!isNavToggled);
+
+    nav.classList.toggle("show-nav");
+  };
+
   const removeArticle = (id) => {
     const newArticles = news.filter((article) => article.publishedAt !== id);
     setNews(newArticles);
+  };
+  const removeHealthNewsArticle = (id) => {
+    const newArticles = healthNews.filter(
+      (article) => article.publishedAt !== id
+    );
+    setHealthNews(newArticles);
+  };
+  const removeTechNewsArticle = (id) => {
+    const newArticles = techNews.filter(
+      (article) => article.publishedAt !== id
+    );
+    setTechNews(newArticles);
   };
 
   const fetchNews = async (url) => {
@@ -52,13 +76,28 @@ const AppProvider = ({ children }) => {
     }
   };
 
+  const getTechNews = async (url) => {
+    setLoading(true);
+    try {
+      const response = await fetch(url);
+      const data = await response.json();
+      if (data) {
+        setTechNews(data.articles);
+      } else {
+        setTechNews([]);
+      }
+      setLoading(false);
+    } catch {
+      setLoading(false);
+    }
+  };
+
   const searchNews = async (url) => {
     setLoading(true);
     try {
       const response = await fetch(url);
       const data = await response.json();
       if (data) {
-        console.log(data.articles);
         setSearchTerm(data.articles);
         setError(false);
       } else {
@@ -83,8 +122,12 @@ const AppProvider = ({ children }) => {
   }, []);
 
   useEffect(() => {
+    getTechNews(techNewsApiEndPoint);
+  }, []);
+
+  useEffect(() => {
     searchNews(
-      `https://newsapi.org/v2/everything?q=${query}&language=en&pageSize=20&apiKey=a6e5cdfaeba2457b96eb3a918e3395c8`
+      `https://newsapi.org/v2/everything?q=${query}&language=en&pageSize=100&apiKey=a6e5cdfaeba2457b96eb3a918e3395c8`
     );
   }, [query]);
 
@@ -95,10 +138,15 @@ const AppProvider = ({ children }) => {
         news,
         healthNews,
         removeArticle,
+        removeHealthNewsArticle,
         setQuery,
         searchTerm,
         query,
         error,
+        isNavToggled,
+        toggleNav,
+        techNews,
+        removeTechNewsArticle,
       }}
     >
       {children}

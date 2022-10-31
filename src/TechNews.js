@@ -3,16 +3,15 @@ import { useGlobalContext } from "./context";
 import NoImage from "./no_image_available.jpg";
 import { HiClock } from "react-icons/hi";
 
-export default function HealthNews() {
-    const { healthNews, isLoading, removeHealthNewsArticle } =
-      useGlobalContext();
-    if (isLoading) {
-      <div class="loader">Loading...</div>;
-    }
+export default function TechNews() {
+  const { techNews, isLoading, removeTechNewsArticle } = useGlobalContext();
+  if (isLoading) {
+    <div class="loader">Loading...</div>;
+  }
   return (
     <section>
-      <h1 className="header">Υγεία</h1>
-      {healthNews.map((article) => {
+      <h1 className="header">Τεχνολογία</h1>
+      {techNews.map((article) => {
         const { title, publishedAt, description, urlToImage, url } = article;
         return (
           <article key={publishedAt}>
@@ -33,7 +32,7 @@ export default function HealthNews() {
             </div>
             <button
               className="notInterestedBtn"
-              onClick={() => removeHealthNewsArticle(publishedAt)}
+              onClick={() => removeTechNewsArticle(publishedAt)}
             >
               Δεν με ενδιαφέρει
             </button>
