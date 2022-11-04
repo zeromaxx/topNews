@@ -6,6 +6,7 @@
 }
 body {
   font-family: "Roboto Slab", serif;
+  background-color: #f5f8fa;
 }
 nav {
   position: fixed;
@@ -189,7 +190,7 @@ footer {
   font-weight: 600;
   border-bottom: 1px solid #ff4136;
   cursor: pointer;
-
+  
   font-size: 10px;
 }
 .top-link {

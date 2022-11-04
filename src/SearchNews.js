@@ -26,7 +26,7 @@ const SearchNews = () => {
     <section>
       <form className="searchForm" onSubmit={handleSubmit}>
         <h3 className="form-header">Αναζητήστε ειδήσεις ανά τον κόσμο</h3>
-        <input ref={refContainer} className="searchInput" type="text"></input>
+        <input required ref={refContainer} className="searchInput" type="text"></input>
 
         <button type="submit">Αναζήτηση</button>
         {error && <h3 className="error">Δεν Βρέθηκαν αποτελέσματα.</h3>}
