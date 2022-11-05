@@ -2,6 +2,7 @@ import React, { useRef, useState } from "react";
 import { useGlobalContext } from "./context";
 import NoImage from "./no_image_available.jpg";
 import { Pagination } from "./Pagination";
+import { HiClock } from "react-icons/hi";
 
 const SearchNews = () => {
   const { setQuery, searchTerm, isLoading, error } = useGlobalContext();
@@ -23,10 +24,15 @@ const SearchNews = () => {
   }
 
   return (
-    <section>
+    <div>
       <form className="searchForm" onSubmit={handleSubmit}>
-        <h3 className="form-header">Αναζητήστε ειδήσεις ανά τον κόσμο</h3>
-        <input required ref={refContainer} className="searchInput" type="text"></input>
+        <h2 className="form-header">Αναζητήστε ειδήσεις ανά τον κόσμο</h2>
+        <input
+          required
+          ref={refContainer}
+          className="searchInput"
+          type="text"
+        ></input>
 
         <button type="submit">Αναζήτηση</button>
         {error && <h3 className="error">Δεν Βρέθηκαν αποτελέσματα.</h3>}
@@ -36,28 +42,33 @@ const SearchNews = () => {
         postsPerPage={postsPerPage}
         setCurrentPage={setCurrentPage}
       />
-      {currentPosts.map((article, index) => {
-        const { title, publishedAt, description, urlToImage, url } = article;
-        return (
-          <article key={index}>
-            <img
-              src={urlToImage === null ? NoImage : urlToImage}
-              alt="article"
-            ></img>
-            <div className="article-info">
-              <h2>{title}</h2>
-              <p className="date-publised">
-                {publishedAt.slice(0, 19).replace("T", "   ")}
-              </p>
-              <p>{description}</p>
-              <a rel="noopener noreferrer" target="_blank" href={url}>
-                Διαβάστε Περισσοτερα
-              </a>
-            </div>
-          </article>
-        );
-      })}
-    </section>
+      <section>
+               {currentPosts.map((article) => {
+          const { title, publishedAt, description, urlToImage, url } = article;
+          return (
+            <article key={publishedAt}>
+              <div className="article-header">
+                <HiClock className="clock" />
+                {publishedAt.slice(0, 19).replace("T", " ")}
+              </div>
+              <img
+                src={urlToImage === null ? NoImage : urlToImage}
+                alt="article"
+              />
+              <div className="article-info">
+                <h2>{title}</h2>
+                <p>{description}</p>
+              </div>
+              <div className="article-footer">
+                <a href={url} rel="noopener noreferrer" target="_blank">
+                  Διαβάστε Περισσότερα
+                </a>
+              </div>
+            </article>
+          );
+        })}
+      </section>
+    </div>
   );
 };
 export default SearchNews;

@@ -7,7 +7,6 @@ export const Pagination = ({ totalPosts, postsPerPage, setCurrentPage }) => {
     pages.forEach((page) => {
       page.classList.remove("activePage");
     });
-    console.log(pages);
     e.target.classList.toggle("activePage");
   };
   for (let i = 1; i <= Math.ceil(totalPosts / postsPerPage); i++) {

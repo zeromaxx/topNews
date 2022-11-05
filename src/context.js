@@ -13,7 +13,7 @@ const AppContext = React.createContext();
 const AppProvider = ({ children }) => {
   const [isLoading, setLoading] = useState(true);
   const [error, setError] = useState(false);
-  const [query, setQuery] = useState("coding");
+  const [query, setQuery] = useState("React");
   const [news, setNews] = useState([]);
   const [healthNews, setHealthNews] = useState([]);
   const [techNews, setTechNews] = useState([]);
