@@ -1,6 +1,6 @@
 import React from "react";
 import { useGlobalContext } from "./context";
-import NoImage from "./no_image_available.jpg";
+import NoImage from "./no_image_available.png";
 import { HiClock } from "react-icons/hi";
 import { RiDeleteBin2Fill } from "react-icons/ri";
 

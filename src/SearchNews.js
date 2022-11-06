@@ -1,6 +1,6 @@
 import React, { useRef, useState } from "react";
 import { useGlobalContext } from "./context";
-import NoImage from "./no_image_available.jpg";
+import NoImage from "./no_image_available.png";
 import { Pagination } from "./Pagination";
 import { HiClock } from "react-icons/hi";
 
