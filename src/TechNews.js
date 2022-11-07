@@ -13,10 +13,10 @@ export default function TechNews() {
     <div>
       <h1 className="header">Τεχνολογία</h1>
       <section>
-        {techNews.map((article) => {
+        {techNews.map((article,index) => {
           const { title, publishedAt, description, urlToImage, url } = article;
           return (
-            <article key={publishedAt}>
+            <article key={index}>
               <div className="article-header">
                 <HiClock className="clock" />
                 {publishedAt.slice(0, 19).replace("T", " ")}

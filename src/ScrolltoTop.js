@@ -2,16 +2,16 @@ import React, { useEffect, useRef } from "react";
 import { AiOutlineArrowUp } from "react-icons/ai";
 
 const ScrollTop = () => {
-  const [scrolled, setScrolled] = React.useState(false);
+  // const [scrolled, setScrolled] = React.useState(false);
   const scrollLink = useRef("");
 
   const handleScroll = () => {
     const scrollHeight = window.pageYOffset;
     if (scrollHeight > 100) {
-      setScrolled(true);
+      // setScrolled(true);
       scrollLink.current.classList.add("show-link");
     } else {
-      setScrolled(false);
+      // setScrolled(false);
       scrollLink.current.classList.remove("show-link");
     }
   };

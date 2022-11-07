@@ -13,7 +13,7 @@ const SearchNews = () => {
     setQuery(refContainer.current.value);
   };
   const [currentPage, setCurrentPage] = useState(2);
-  const [postsPerPage, setpostsPerPage] = useState(10);
+  const [postsPerPage] = useState(10);
 
   const lastPostIndex = currentPage * postsPerPage;
   const firstPostsIndex = lastPostIndex - postsPerPage;
@@ -43,10 +43,10 @@ const SearchNews = () => {
         setCurrentPage={setCurrentPage}
       />
       <section>
-               {currentPosts.map((article) => {
+               {currentPosts.map((article,index) => {
           const { title, publishedAt, description, urlToImage, url } = article;
           return (
-            <article key={publishedAt}>
+            <article key={index}>
               <div className="article-header">
                 <HiClock className="clock" />
                 {publishedAt.slice(0, 19).replace("T", " ")}

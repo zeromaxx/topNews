@@ -16,10 +16,10 @@ const News = () => {
         στην Ελλάδα
       </h1>
       <section>
-        {news.map((article) => {
+        {news.map((article,index) => {
           const { title, publishedAt, description, urlToImage, url } = article;
           return (
-            <article key={publishedAt}>
+            <article key={index}>
               <div className="article-header">
                 <HiClock className="clock" />
                 {publishedAt.slice(0, 19).replace("T", " ")}
