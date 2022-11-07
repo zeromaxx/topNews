@@ -14,27 +14,27 @@ export default function TechNews() {
       <h1 className="header">Τεχνολογία</h1>
       <section>
         {techNews.map((article,index) => {
-          const { title, publishedAt, description, urlToImage, url } = article;
+          const { title, published_date, abstract, multimedia, url } = article;
           return (
             <article key={index}>
               <div className="article-header">
                 <HiClock className="clock" />
-                {publishedAt.slice(0, 19).replace("T", " ")}
+                {published_date.slice(0, 19).replace("T", " ")}
               </div>
               <img
-                src={urlToImage === null ? NoImage : urlToImage}
+                src={multimedia === null ? NoImage : multimedia[1].url}
                 alt="article"
               />
               <div className="article-info">
                 <h2>{title}</h2>
-                <p>{description}</p>
+                <p>{abstract}</p>
               </div>
               <div className="article-footer">
                 <a href={url} rel="noopener noreferrer" target="_blank">
-                  Διαβάστε Περισσότερα
+                  Read More
                 </a>
                 <button
-                  onClick={() => removeTechNewsArticle(publishedAt)}
+                  onClick={() => removeTechNewsArticle(published_date)}
                   className="notInterestedBtn"
                 >
                   <RiDeleteBin2Fill />

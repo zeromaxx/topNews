@@ -1,6 +1,5 @@
 import React, { useRef, useState } from "react";
 import { useGlobalContext } from "./context";
-import NoImage from "./no_image_available.png";
 import { Pagination } from "./Pagination";
 import { HiClock } from "react-icons/hi";
 
@@ -13,7 +12,7 @@ const SearchNews = () => {
     setQuery(refContainer.current.value);
   };
   const [currentPage, setCurrentPage] = useState(2);
-  const [postsPerPage] = useState(10);
+  const [postsPerPage] = useState(4);
 
   const lastPostIndex = currentPage * postsPerPage;
   const firstPostsIndex = lastPostIndex - postsPerPage;
@@ -26,7 +25,7 @@ const SearchNews = () => {
   return (
     <div>
       <form className="searchForm" onSubmit={handleSubmit}>
-        <h2 className="form-header">Αναζητήστε ειδήσεις ανά τον κόσμο</h2>
+        <h2 className="form-header">Search for news around the world</h2>
         <input
           required
           ref={refContainer}
@@ -34,8 +33,8 @@ const SearchNews = () => {
           type="text"
         ></input>
 
-        <button type="submit">Αναζήτηση</button>
-        {error && <h3 className="error">Δεν Βρέθηκαν αποτελέσματα.</h3>}
+        <button type="submit">Search</button>
+        {error && <h3 className="error">No results found.</h3>}
       </form>
       <Pagination
         totalPosts={searchTerm.length}
@@ -43,25 +42,22 @@ const SearchNews = () => {
         setCurrentPage={setCurrentPage}
       />
       <section>
-               {currentPosts.map((article,index) => {
-          const { title, publishedAt, description, urlToImage, url } = article;
+        {currentPosts.map((article, index) => {
+          const { headline, web_url, pub_date, lead_paragraph} =
+            article;
           return (
-            <article key={index}>
+            <article style={{ background: "white",height:'50%' }} key={index}>
               <div className="article-header">
                 <HiClock className="clock" />
-                {publishedAt.slice(0, 19).replace("T", " ")}
+                {pub_date.slice(0, 19).replace("T", " ")}
               </div>
-              <img
-                src={urlToImage === null ? NoImage : urlToImage}
-                alt="article"
-              />
               <div className="article-info">
-                <h2>{title}</h2>
-                <p>{description}</p>
+                <h2>{headline.main}</h2>
+                <p>{lead_paragraph}</p>
               </div>
-              <div className="article-footer">
-                <a href={url} rel="noopener noreferrer" target="_blank">
-                  Διαβάστε Περισσότερα
+              <div style={{  }} className="article-footer">
+                <a href={web_url} rel="noopener noreferrer" target="_blank">
+                  Read More
                 </a>
               </div>
             </article>

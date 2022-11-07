@@ -22,7 +22,7 @@ function App() {
           <Route  path="/" element={<Home />}></Route>
           <Route path="/health" element={<HealthNews />}></Route>
           <Route path="/search" element={<SearchNews />}></Route>
-          <Route path="/technology" element={<TechNews />}></Route>
+          <Route path="/travel" element={<TechNews />}></Route>
         </Routes>
         <ScrollTop />
         <Footer />

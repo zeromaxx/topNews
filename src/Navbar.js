@@ -19,7 +19,7 @@ export default function Navbar() {
               })}
               to="/health"
             >
-              Υγεία
+              Health
             </NavLink>
           </li>
           <li>
@@ -28,9 +28,9 @@ export default function Navbar() {
               style={({ isActive }) => ({
                 color: isActive ? "#0074d9" : "black",
               })}
-              to="/technology"
+              to="/travel"
             >
-              Τεχνολογία
+              Travel
             </NavLink>
           </li>
           <li>
@@ -42,7 +42,7 @@ export default function Navbar() {
               activeclassname="activeLink"
               to="/search"
             >
-              Αναζήτηση Ειδήσεων
+              Search News
             </NavLink>
           </li>
         </ul>

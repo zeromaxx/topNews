@@ -1,13 +1,13 @@
 import React, { useState, useContext, useEffect } from "react";
 
 const apiEndPoint =
-  "https://newsapi.org/v2/top-headlines?country=gr&apiKey=a6e5cdfaeba2457b96eb3a918e3395c8";
+  "https://api.nytimes.com/svc/topstories/v2/technology.json?api-key=pzfOvxAPHrVmrRhYldYWGEK6FkHzV0LX";
 
 const healthNewsApiEndPoint =
-  "https://newsapi.org/v2/top-headlines?category=health&country=gr&apiKey=a6e5cdfaeba2457b96eb3a918e3395c8";
+  "https://api.nytimes.com/svc/topstories/v2/health.json?api-key=pzfOvxAPHrVmrRhYldYWGEK6FkHzV0LX";
 
 const techNewsApiEndPoint =
-  "https://newsapi.org/v2/top-headlines?category=technology&country=gr&apiKey=a6e5cdfaeba2457b96eb3a918e3395c8";
+  "https://api.nytimes.com/svc/topstories/v2/travel.json?api-key=pzfOvxAPHrVmrRhYldYWGEK6FkHzV0LX";
 
 const AppContext = React.createContext();
 const AppProvider = ({ children }) => {
@@ -28,18 +28,18 @@ const AppProvider = ({ children }) => {
   };
 
   const removeArticle = (id) => {
-    const newArticles = news.filter((article) => article.publishedAt !== id);
+    const newArticles = news.filter((article) => article.published_date !== id);
     setNews(newArticles);
   };
   const removeHealthNewsArticle = (id) => {
     const newArticles = healthNews.filter(
-      (article) => article.publishedAt !== id
+      (article) => article.published_date !== id
     );
     setHealthNews(newArticles);
   };
   const removeTechNewsArticle = (id) => {
     const newArticles = techNews.filter(
-      (article) => article.publishedAt !== id
+      (article) => article.published_date !== id
     );
     setTechNews(newArticles);
   };
@@ -50,7 +50,7 @@ const AppProvider = ({ children }) => {
       const response = await fetch(url);
       const data = await response.json();
       if (data) {
-        setNews(data.articles);
+        setNews(data.results);
       } else {
         setNews([]);
       }
@@ -66,7 +66,7 @@ const AppProvider = ({ children }) => {
       const response = await fetch(url);
       const data = await response.json();
       if (data) {
-        setHealthNews(data.articles);
+        setHealthNews(data.results);
       } else {
         setHealthNews([]);
       }
@@ -82,7 +82,7 @@ const AppProvider = ({ children }) => {
       const response = await fetch(url);
       const data = await response.json();
       if (data) {
-        setTechNews(data.articles);
+        setTechNews(data.results);
       } else {
         setTechNews([]);
       }
@@ -98,12 +98,12 @@ const AppProvider = ({ children }) => {
       const response = await fetch(url);
       const data = await response.json();
       if (data) {
-        setSearchTerm(data.articles);
+        setSearchTerm(data.response.docs);
         setError(false);
       } else {
         setSearchTerm([]);
       }
-      if (data.totalResults === 0) {
+      if (data.response.docs === 0) {
         setLoading(false);
         setError(true);
       }
@@ -127,7 +127,7 @@ const AppProvider = ({ children }) => {
 
   useEffect(() => {
     searchNews(
-      `https://newsapi.org/v2/everything?q=${query}&language=en&pageSize=100&apiKey=a6e5cdfaeba2457b96eb3a918e3395c8`
+      `https://api.nytimes.com/svc/search/v2/articlesearch.json?q=${query}&api-key=pzfOvxAPHrVmrRhYldYWGEK6FkHzV0LX`
     );
   }, [query]);
 
