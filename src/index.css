@@ -99,15 +99,18 @@ article img {
   color: #aaaaaa;
   font-weight: 600;
   font-size: 14px;
+  background-color: white;
 }
 .article-info {
   border-bottom: 1px solid #eff2f5;
   height: 200px;
   overflow: hidden;
+  background-color: white;
 }
 .article-footer {
   display: flex;
   justify-content: space-between;
+  background-color: white;
 }
 @media screen and (max-width: 1200px) {
   section {

@@ -24,7 +24,7 @@ const News = () => {
                 {published_date.slice(0, 19).replace("T", " ")}
               </div>
               <img
-                src={multimedia[1].url === null ? NoImage : multimedia[1].url}
+                src={multimedia === null ? NoImage : multimedia[1].url}
                 alt="article"
               />
               <div className="article-info">
