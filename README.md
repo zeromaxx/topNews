@@ -7,7 +7,7 @@ Features:
     Real-time Updates: Stay abreast of international happenings with continuously updated news feeds.
     Personalized News Experience: Customize your newsfeed by filtering out topics or categories that don't resonate with your interests.
     Powerful Search: Explore specific news narratives or incidents from around the globe using our efficient search system.
-
+    
 <b>Technologies: </b>
 <p>React, HTML, CSS, Javascript</p>
 
